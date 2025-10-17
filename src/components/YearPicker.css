@@ -1,0 +1,151 @@
+.yearpicker-wrap { 
+	width: 100%; 
+}
+
+.yearpicker-bar { 
+	position: relative; 
+	display: flex; 
+	width: 100%; 
+	height: 48px; 
+	border-radius: 9999px; 
+	overflow: hidden; 
+	box-shadow: 0 3px 12px rgba(0,0,0,.2) inset, 0 2px 8px rgba(0,0,0,.25); 
+} 
+.yearpicker-segment { 
+	flex: 1; border: 0; background: transparent; cursor: pointer; 
+} 
+.yearpicker-segment { position: relative; z-index: 0; }
+
+.yearpicker-bar::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: var(--active-color, #343d4e);
+	transform: scaleX(0);
+	transform-origin: var(--wipe-origin, 0%) 50%;
+	transition: transform 450ms ease;
+	z-index: 1;
+	pointer-events: none;
+	will-change: transform;
+}
+  
+.seg-0 { background: #343d4e; border-top-right-radius: 0; border-bottom-right-radius: 0; } 
+.seg-1 { background: #677693; border-radius: 0; } 
+.seg-2 { background: #8694ad; border-radius: 0;}
+.seg-3 { background: #997588; border-radius: 0;} 
+.seg-4 { background: #7d4c66; border-radius: 0;} 
+
+.seg-5 { background: #543344; border-top-left-radius: 0; border-bottom-left-radius: 0;} 
+
+/*.yearpicker-bar.is-active .yearpicker-segment { 
+	background: var(--active-color) !important; 
+}*/
+
+.yearpicker-bar.is-active::after {
+	transform: scaleX(1);
+}
+.yearpicker-labels { 
+	display: flex; 
+	justify-content: space-between; 
+	margin-top: 10px; 
+	font: 45px; 
+	color: #333; 
+	cursor: pointer; 
+} 
+.yearpicker-labels .year-tick, .yearpicker-years .year-item { 
+	position: relative; 
+	display: inline-block; 
+	text-decoration: none;
+	cursor: pointer;
+	text-underline-offset: 3px; 
+} 
+
+.yearpicker-labels .year-tick::after, .yearpicker-years .year-item::after { 
+	content: ""; 
+	position: absolute; 
+	left: 0; 
+	right: 0; 
+	bottom: -2px;
+	height: 2px; 
+	background: currentColor; 
+	transform: scaleX(0);
+	transform-origin: left center; 
+	transition: transform 600ms ease;
+	will-change: transform; 
+} 
+	.yearpicker-years { 
+		display: flex; 
+		flex-direction: column; 
+		align-items: stretch; 
+		 gap: 8px; 
+	} 
+
+	.year-actions { 
+		display: flex; 
+		width: 100%; 
+		justify-content: flex-end; 
+		padding-top: 10px; 
+	}
+	.yearlist { 
+		width: 100%; 
+		display: flex; 
+		justify-content: space-between; 
+		flex-wrap: wrap; 
+		row-gap: 12px; 
+		padding-top: 10px; 
+	} 
+	.year-item { 
+		font: 45px; 
+		color: #333; 
+		white-space: nowrap; 
+		cursor: pointer; 
+	} 
+	@media (hover: hover) { 
+		.yearpicker-labels .year-tick:hover::after, .yearpicker-years .year-item:hover::after { 
+			transform: scaleX(1); 
+		} 
+	} 
+	.yearpicker-labels .year-tick:focus-visible::after, .yearpicker-years .year-item:focus-visible::after { 
+		transform: scaleX(1); 
+	} 
+	@media (prefers-reduced-motion: reduce) { 
+		.yearpicker-labels .year-tick::after, .yearpicker-years .year-item::after { 
+			transition: none; 
+		} 
+	}
+	.back-link { 
+		background: none; 
+		border: 0; 
+		padding: 0; 
+		color: #333; 
+		font: 20px; 
+		cursor: pointer; 
+		position: relative; 
+		text-decoration: none; 
+		margin-left: auto; 
+	} 
+	.back-link::after { 
+		content: ""; 
+		position: absolute; 
+		left: 0; 
+		right: 0; 
+		bottom: -2px; 
+		height: 2px; 
+		background: currentColor; 
+		transform: scaleX(0); 
+		transform-origin: left center; 
+		transition: transform 600ms ease; 
+	} 
+	@media (hover: hover) { 
+		.back-link:hover::after { 
+			transform: scaleX(1); 
+		} 
+	} 
+	.back-link:focus-visible::after { 
+		transform: scaleX(1); 
+	} 
+	@media (prefers-reduced-motion: reduce) { 
+		.back-link::after { transition: none; 
+		} 
+	}

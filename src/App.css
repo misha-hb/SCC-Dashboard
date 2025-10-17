@@ -1,0 +1,76 @@
+/* remove default body margin */
+body {
+  margin: 0;
+}
+
+/* make the layout stretch so the footer sits at the bottom */
+html, body, #root { height: 100%; }
+.app-shell { min-height: 100%; display: flex; flex-direction: column; }
+
+/* keep content from hiding under the fixed navbar (85px) */
+.app-main { flex: 1; padding-top: 85px; }
+
+/* footer styling */
+.site-footer {
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  color: #555;
+  font-size: 12px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 16px;
+}
+
+/* optional: tighter side padding on small screens */
+@media (max-width: 640px) {
+  .footer-inner { padding: 10px 12px; }
+}
+
+
+/* overall navbar strip */
+.navbar-custom {
+  background-color: white;           /* dark background */
+  border-bottom: 1px solid rgba(132, 129, 129, 0.3);   /* subtle bottom border */
+  box-shadow: 0 2px 6px rgba(226, 224, 224, 0.3); /* soft shadow */
+  height: 85px;                       /* fixed height */
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  font-family: "Libre Baskerville", Baskerville, "Baskerville Old Face";
+
+}
+
+/* brand text */
+.navbar-custom .brand {
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  margin-left: 24px;
+  color: #3c3c3c;       /* light text */
+  text-decoration: none;
+}
+
+.navbar-custom .brand:hover {
+  color: black;       /* accent on hover */
+  text-decoration: none;
+}
+
+/* hide the Bootstrap toggler (since no links yet) */
+.navbar-toggler {
+  display: none !important;
+}
+
+/* center brand horizontally if you want a single title */
+.navbar-custom .container-fluid {
+  justify-content: center;
+}
+:focus:not(:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important; /* covers Bootstrap-style rings */
+}
+
+/* Recharts SVG shapes sometimes get focus */
+.recharts-wrapper *:focus {
+  outline: none !important;
+}
