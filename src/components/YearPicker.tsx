@@ -1,6 +1,6 @@
 import React from "react";
 import "./YearPicker.css";
-import { MobileUsers } from "../hooks/mobileUsers.ts";
+import { MobileUsers } from "../hooks/mobileUsers";
 
 type YearPickerProps = {
   years?: number[];

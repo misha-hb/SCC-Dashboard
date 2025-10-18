@@ -10,7 +10,7 @@ import SummaryPie from "./SummaryPie";
 import SummaryTable from "./SummaryTable";
 import SummaryMap from "./SummaryMap";
 import InfoTip from "../InfoTip";
-import { MobileUsers } from "../../hooks/mobileUsers";
+import { MobileUsers } from "../../hooks/MobileUsers";
 
 type Mode = "bar" | "pie" | "table" | "map";
 
