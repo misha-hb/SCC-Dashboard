@@ -16,17 +16,17 @@ const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375", 
       () => Math.max(0, ...data.map(d => Number(d.value) || 0)),
       [data]
     );
-    const pad = maxVal <= 10 ? 1 : Math.ceil(maxVal * 0.1); // +1 for small counts, +10% otherwise
+    const pad = maxVal <= 10 ? 1 : Math.ceil(maxVal * 0.1); 
   
     return (
       <div style={{ width: "100%", height: isMobile ? 300 : 520, background: "#fff", borderRadius: 12, padding: isMobile ? "6px 6px 6px 2px" : "12px", fontSize: 15 }}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
-            margin={{ top: isMobile ? 16 : 28,     // tighten chart margins on mobile
+            margin={{ top: isMobile ? 16 : 28,     
               right: isMobile ? 4 : 16,
               left: isMobile ? 0 : 8,
-              bottom: isMobile ? 4 : 8, }} // a little extra top margin helps too
+              bottom: isMobile ? 4 : 8, }} 
               barCategoryGap={isMobile ? "10%" : "10%"}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -44,7 +44,6 @@ const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375", 
               width={isMobile ? 22 : 40}
               tickMargin={isMobile ? 2 : 6}
               tick={{ fontSize: isMobile ? 11 : 12, fontFamily: 'sans-serif', fill: '#000' }}
-              // headroom for label above the tallest bar
               domain={[0, (dataMax: number) => Math.max(1, dataMax) + pad]}
             />
             <Tooltip />

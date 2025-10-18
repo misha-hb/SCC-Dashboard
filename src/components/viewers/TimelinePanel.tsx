@@ -6,10 +6,8 @@ import {
   ScatterChart, Scatter
 } from "recharts";
 import InfoTip from "../InfoTip";
-// imports
 import CaseDrawer from "../CaseDrawer";
 
-// Month name helper (same order you use in timeline.ts)
 const MONTHS = [
   "January","February","March","April","May","June",
   "July","August","September","October","November","December",
@@ -23,20 +21,19 @@ function casesUpToMonth(cases: CaseItem[], label: string, year: number) {
     const s = c.date ?? "";
     if (s.length < 7) return false;
     const y = Number(s.slice(0, 4));
-    const mm = Number(s.slice(5, 7)) - 1; // 0-based
-    return y === year && mm <= m; // <= month => cumulative
+    const mm = Number(s.slice(5, 7)) - 1; 
+    return y === year && mm <= m; 
   });
 }
 
 function casesForMonth(cases: CaseItem[], label: string, year: number) {
   const m = MONTHS.indexOf(label as (typeof MONTHS)[number]);
   if (m < 0) return [];
-  // date is ISO yyyy-mm-dd; slice is safe and fast
   return (cases ?? []).filter((c) => {
     const s = c.date ?? "";
     if (s.length < 7) return false;
     const y = Number(s.slice(0, 4));
-    const mm = Number(s.slice(5, 7)) - 1; // 0-based
+    const mm = Number(s.slice(5, 7)) - 1; 
     return y === year && mm === m;
   });
 }
@@ -69,7 +66,7 @@ const [drawerTitle, setDrawerTitle] = React.useState("");
 const [drawerItems, setDrawerItems] = React.useState<CaseItem[]>([]);
 
 const ClickDot = (props: any) => {
-  const { cx, cy, payload, stroke, fill, series } = props; // <-- get series here
+  const { cx, cy, payload, stroke, fill, series } = props;
   if (typeof cx !== "number" || typeof cy !== "number") return null;
   const color: string = stroke || fill || "#8884d8";
 
@@ -77,10 +74,10 @@ const ClickDot = (props: any) => {
     <circle
       cx={cx}
       cy={cy}
-      r={5}                     // <-- constant size (no hover growth)
-      fill={color}              // <-- constant fill color
-      fillOpacity={1}           // <-- prevent any hover fade
-      stroke="#c4c2c2"          // <-- constant outline
+      r={5}                     
+      fill={color}             
+      fillOpacity={1}         
+      stroke="#c4c2c2"       
       strokeWidth={1}
       style={{ cursor: "pointer" }}
       onClick={(e) => {
@@ -159,7 +156,6 @@ const ClickDot = (props: any) => {
           <div style={{ color: "#666", fontSize: 15 }}>Select one or more views to display.</div>
         ) : (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16, alignItems: "stretch" }}>
-            {/* Line (monthly counts), plus a cumulative line for context */}
             {selected.includes("line") && (
               <div style={{ width: "100%", height: 360, background: "#fff", borderRadius: 12, padding: 12 }}>
                 <ResponsiveContainer width="100%" height="100%">
@@ -189,7 +185,6 @@ const ClickDot = (props: any) => {
               </div>
             )}
 
-            {/* Scatter (daily counts) */}
             {selected.includes("scatter") && (
               <div style={{ width: "100%", height: 360, background: "#fff", borderRadius: 12, padding: 12 }}>
                 <ResponsiveContainer width="100%" height="100%">

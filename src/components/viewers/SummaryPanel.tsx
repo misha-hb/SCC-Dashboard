@@ -1,7 +1,7 @@
 import React from "react";
 import type { CaseItem } from "../../types";
 import { recordToPairs } from "../../utils/transform";
-import CaseDrawer from "../CaseDrawer";                      // <-- add
+import CaseDrawer from "../CaseDrawer";                    
 import { filterCasesByDimension, type Dimension } from "../../utils/caseFilters";
 import { isAllUnknown } from "../../utils/validate";
 import type { Pair } from "../../utils/transform";
@@ -38,8 +38,8 @@ export default function SummaryPanel({
   modes = ["bar", "pie", "table"],
   defaultOpen = false,
   description,
-  cases,                         // full case array for this year
-  dim,                           // what this summary represents
+  cases,                         
+  dim,                         
   topJudgeNames,
   year, 
   type
@@ -59,15 +59,15 @@ export default function SummaryPanel({
 }) {
   const [open, setOpen] = React.useState(defaultOpen);
   const [selected, setSelected] = React.useState<Mode[]>([defaultMode]);
-  const [drawerOpen, setDrawerOpen] = React.useState(false);         // NEW
-  const [drawerTitle, setDrawerTitle] = React.useState("");          // NEW
+  const [drawerOpen, setDrawerOpen] = React.useState(false);        
+  const [drawerTitle, setDrawerTitle] = React.useState("");         
   const [drawerItems, setDrawerItems] = React.useState<CaseItem[]>([]);
   const data: Pair[] = React.useMemo(() => recordToPairs(summary), [summary]);
   const contentId = React.useId();
   const viewers: React.ReactNode[] = [];
 
   const isMobile = MobileUsers(640);
-  const sidePad = isMobile ? 6 : 14;   // was 14px everywhere
+  const sidePad = isMobile ? 6 : 14; 
 const headPad = isMobile ? 8 : 12; 
 
 const nonZero = React.useMemo(() => filterNonZeroPairs(data), [data]);
@@ -79,7 +79,7 @@ const canUsePie = categoryCount <= 25;
   if (selected.includes("table")) viewers.push(<SummaryTable key="table" data={data} title={title} dim={dim}/>);
   if (selected.includes("map"))  viewers.push(<SummaryMap key="map" summary={summary} title="Province Map" />);
 
-  const onSelectBucket = (label: string, value: number) => {         // NEW
+  const onSelectBucket = (label: string) => {       
     if (!cases || !dim) return;
     const items = filterCasesByDimension(cases, dim, label, { topJudgeNames });
     const provLabel =
@@ -95,7 +95,7 @@ const canUsePie = categoryCount <= 25;
   }
 
   const toggleMode = (m: Mode) => {
-    if (m === "pie" && !canUsePie) return; // block pie selection
+    if (m === "pie" && !canUsePie) return; 
   setSelected(prev => (prev.includes(m) ? prev.filter(x => x !== m) : [...prev, m]))};
   
   const effectiveModes = React.useMemo(
@@ -103,12 +103,11 @@ const canUsePie = categoryCount <= 25;
     [modes, canUsePie]
   );
   
-  // if pie becomes disallowed, remove it from selection (and ensure at least one mode)
   React.useEffect(() => {
     if (!canUsePie) {
       setSelected(prev => {
         const next = prev.filter(m => m !== "pie");
-        return next.length ? next : ["bar"]; // fallback to bar (or first of effectiveModes)
+        return next.length ? next : ["bar"]; 
       });
     }
   }, [canUsePie]);
@@ -125,7 +124,6 @@ const canUsePie = categoryCount <= 25;
         overflow: "visible",
       }}
     >
-      {/* Header: chevron + title */}
       <button
         type="button"
         aria-expanded={open}
@@ -143,7 +141,6 @@ const canUsePie = categoryCount <= 25;
           textAlign: "left",
         }}
       >
-        {/* chevron */}
         <svg
           width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"
           style={{ transition: "transform 600ms ease", transform: open ? "rotate(90deg)" : "rotate(0deg)" }}
@@ -171,7 +168,6 @@ const canUsePie = categoryCount <= 25;
           </div>
         ) : (
           <>
-            {/* checkbox row */}
             <div
               style={{
                 display: "flex",
@@ -205,7 +201,6 @@ const canUsePie = categoryCount <= 25;
               })}
             </div>
 
-            {/* viewers grid */}
             {selected.length === 0 ? (
               <div style={{ color: "#666", fontSize: 15 }}>Select one or more views to display.</div>
             ) : (

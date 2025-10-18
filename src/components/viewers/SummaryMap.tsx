@@ -1,17 +1,16 @@
-// SummaryMap.tsx
 import React from "react";
 import L from "leaflet";
 import CA_GEO_RAW from "../../assets/ca-provinces.json";
 import { MapContainer as RLMap, GeoJSON, useMap } from "react-leaflet";
 import type { FeatureCollection, Geometry, GeoJsonProperties } from "geojson";
-import type { CaseItem } from "../../types";  // <-- add this
+import type { CaseItem } from "../../types"; 
 import "leaflet/dist/leaflet.css";
 
 type Props = {
   summary: Record<string, number>;
   title?: string;
-  cases?: CaseItem[];                          // <-- add
-  onOpenCases?: (title: string, items: CaseItem[]) => void; // <-- add
+  cases?: CaseItem[];                          
+  onOpenCases?: (title: string, items: CaseItem[]) => void; 
 };
 
 const provinces = CA_GEO_RAW as unknown as FeatureCollection<Geometry, GeoJsonProperties>;
@@ -24,7 +23,6 @@ const PRUID_TO_POSTAL = Object.fromEntries(
   Object.entries(POSTAL_TO_PRUID).map(([pc, pruid]) => [pruid, pc])
 );
 
-// Optional: map full names -> postal codes (helps if your CaseItem.province has names)
 const NAME_TO_POSTAL: Record<string, string> = {
   "ALBERTA":"AB","BRITISH COLUMBIA":"BC","MANITOBA":"MB","NEW BRUNSWICK":"NB",
   "NEWFOUNDLAND AND LABRADOR":"NL","NOVA SCOTIA":"NS","ONTARIO":"ON",
@@ -61,8 +59,8 @@ function getPruid(feature: any): string | undefined {
 function makeColorScale(max: number) {
   const maxSafe = Math.max(1, max);
   return (v: number) => {
-    const t = Math.min(1, v / maxSafe); // 0..1
-    const light = 92 - 62 * t;          // 92% → 30%
+    const t = Math.min(1, v / maxSafe); 
+    const light = 92 - 62 * t;        
     const sat   = 85;
     const hue   = 210;
     return `hsl(${hue} ${sat}% ${light}%)`;
@@ -155,14 +153,12 @@ export default function SummaryMap({ summary, cases = [], onOpenCases }: Props) 
       (layer as any).closeTooltip?.();
     });
 
-    // 🔵 CLICK -> open CaseDrawer via parent callback
     (layer as any).on?.("click", () => {
       if (!postal) return;
 
-      // normalize each case's province to a 2-letter code
       const items = cases.filter((c) => {
         const raw = (c.province ?? "").trim().toUpperCase();
-        const code = NAME_TO_POSTAL[raw] ?? raw; // accept full names or codes
+        const code = NAME_TO_POSTAL[raw] ?? raw;
         return code === postal;
       });
 

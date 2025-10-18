@@ -1,4 +1,3 @@
-// src/components/CasesScatter.tsx
 import React from "react";
 import { ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import type { CaseItem } from "../../types";
@@ -6,7 +5,6 @@ import { buildCaseTimeline } from "../../utils/timeline";
 
 export default function SummaryScatter({ cases }: { cases: CaseItem[] }) {
   const daily = React.useMemo(() => buildCaseTimeline(cases, { granularity: "day", fillMissing: false }), [cases]);
-  // Recharts Scatter likes numeric x; we’ll use ts and format ticks
   return (
     <div style={{ width: "100%", height: 380 }}>
       <ResponsiveContainer width="100%" height="100%">

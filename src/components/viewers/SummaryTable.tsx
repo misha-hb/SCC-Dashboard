@@ -1,4 +1,3 @@
-import React from "react";
 import type { Pair } from "../../utils/transform";
 
 const PROVINCE_NAMES: Record<string, string> = {

@@ -1,10 +1,9 @@
-// timeline.ts
 import type { CaseItem } from "../types";
 
 export type Granularity = "month" | "day";
 export type TimelinePoint = {
-  key: string;   // now "January", "February", ...
-  label: string; // same as key for months
+  key: string; 
+  label: string; 
   date: Date;
   ts: number;
   count: number;
@@ -32,8 +31,8 @@ function keyFor(date: Date, granularity: Granularity) {
   if (granularity === "month") {
     const monthName = MONTHS[mIdx];
     return {
-      key: monthName,                 // <-- month name
-      label: monthName,               // what you show on the X axis
+      key: monthName,                 
+      label: monthName,           
       bucketStart: new Date(Date.UTC(y, mIdx, 1)),
     };
   }
@@ -51,7 +50,7 @@ function fillMissingMonths(year: number) {
     const d = new Date(Date.UTC(year, i, 1));
     const monthName = MONTHS[i];
     return {
-      key: monthName,                 // <-- month name
+      key: monthName,                
       label: monthName,
       date: d,
       ts: d.getTime(),

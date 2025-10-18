@@ -1,4 +1,3 @@
-import React from "react";
 import { ResponsiveContainer,LabelList, PieChart, Pie, Tooltip, Cell, Legend } from "recharts";
 import type { Pair } from "../../utils/transform";
 import { MobileUsers } from "../../hooks/mobileUsers";
