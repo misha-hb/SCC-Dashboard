@@ -1,6 +1,6 @@
 import React from "react";
 import "./YearPicker.css";
-import { MobileUsers } from "../hooks/mobileUsers";
+import { Mobile } from "../hooks/Mobile";
 
 type YearPickerProps = {
   years?: number[];
@@ -21,7 +21,7 @@ export default function YearPicker({ years, onSelect, onYearSelect }: YearPicker
   const [wipeOrigin, setWipeOrigin] = React.useState<string>("0%");
   const [animating, setAnimating] = React.useState(false);
 
-  const isMobile = MobileUsers(640);
+  const isMobile = Mobile(640);
 
   const renderYearLabel = (y: number) =>
     active != null && isMobile ? String(y).slice(-2) : String(y);
@@ -36,7 +36,6 @@ export default function YearPicker({ years, onSelect, onYearSelect }: YearPicker
     onSelect?.(ticks[segIndex], ticks[segIndex + 1]);
     onYearSelect?.(null);
   };
-  const handleBarClick = (i: number) => activateSegment(i);
   const handleTickClick = (tickIndex: number) => {
     if (locked || animating) return;
     const segIndex = tickIndex === ticks.length - 1 ? tickIndex - 1 : tickIndex;

@@ -2,7 +2,7 @@ import React from "react";
 import { ResponsiveContainer, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, LabelList } from "recharts";
 import type { Pair } from "../../utils/transform";
 import { surnameOf } from "../../utils/transform";
-import { MobileUsers } from "../../hooks/MobileUsers";
+import { Mobile } from "../../hooks/Mobile";
 
 const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375",  "#356054", "#1a366b","#86bbc0",
   "#8b8db3", "#9e73af", "#eac8e4",];
@@ -11,7 +11,7 @@ const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375", 
   
 
   export default function SummaryBar({ data, onBarClick }: Props) {
-    const isMobile = MobileUsers(640);
+    const isMobile = Mobile(640);
     const maxVal = React.useMemo(
       () => Math.max(0, ...data.map(d => Number(d.value) || 0)),
       [data]

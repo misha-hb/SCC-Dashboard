@@ -1,6 +1,6 @@
 import { ResponsiveContainer,LabelList, PieChart, Pie, Tooltip, Cell, Legend } from "recharts";
 import type { Pair } from "../../utils/transform";
-import { MobileUsers } from "../../hooks/mobileUsers";
+import { Mobile } from "../../hooks/Mobile";
 
 const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375",  "#356054", "#1a366b","#86bbc0",
   "#8b8db3", "#9e73af", "#eac8e4",];
@@ -8,7 +8,7 @@ const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375", 
   type Props = { data: Pair[]; onSliceClick?: (label: string, value: number) => void };
 
 export default function SummaryPie({ data, onSliceClick }: Props) {
-  const isMobile = MobileUsers(640);
+  const isMobile = Mobile(640);
 
     return (
     <div style={{ width: "100%", height: isMobile ? 200 : 500, background: "#fff", borderRadius: 12, padding: 12, fontSize: 15 }}>

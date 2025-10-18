@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export function MobileUsers(maxWidth = 640) {
+export function Mobile(maxWidth = 640) {
   const [isMobile, setIsMobile] = React.useState(
     typeof window !== "undefined" ? window.matchMedia(`(max-width: ${maxWidth}px)`).matches : false
   );

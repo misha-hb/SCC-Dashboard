@@ -10,7 +10,7 @@ import SummaryPie from "./SummaryPie";
 import SummaryTable from "./SummaryTable";
 import SummaryMap from "./SummaryMap";
 import InfoTip from "../InfoTip";
-import { MobileUsers } from "../../hooks/mobileUsers";
+import { Mobile } from "../../hooks/Mobile";
 
 type Mode = "bar" | "pie" | "table" | "map";
 
@@ -66,7 +66,7 @@ export default function SummaryPanel({
   const contentId = React.useId();
   const viewers: React.ReactNode[] = [];
 
-  const isMobile = MobileUsers(640);
+  const isMobile = Mobile(640);
   const sidePad = isMobile ? 6 : 14; 
 const headPad = isMobile ? 8 : 12; 
 
