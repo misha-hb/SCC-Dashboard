@@ -1,7 +1,1 @@
-# from your frontend repo root
-mkdir -p public
-printf "/* /index.html 200\n" > public/_redirects
-
-git add public/_redirects
-git commit -m "Add Netlify SPA redirect"
-git push origin main
+/* /index.html 200
