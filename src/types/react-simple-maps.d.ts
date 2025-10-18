@@ -1,4 +1,3 @@
-// Minimal typings so TS stops complaining. Refine later if you like.
 declare module "react-simple-maps" {
     import * as React from "react";
   
