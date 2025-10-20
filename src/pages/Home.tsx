@@ -27,7 +27,7 @@ export default function Home() {
             Supreme Court Case Dashboard
             </div>
             <div className="subtitle" style={{paddingBottom:"15px"}}>
-            Select which year you would like to view Supreme Court judgments for
+            Select which year you would like to view Canadian Supreme Court judgments for
             </div>
       <YearPicker
       onYearSelect={(y) => setSelectedYear(y)}
