@@ -161,8 +161,8 @@ const ClickDot = (props: any) => {
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={cumulative} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="label" tick={{ fontSize: 12, fontFamily: "Open Sans", fontWeight: 100, stroke: " #000000" }} />
-                    <YAxis allowDecimals={false} tick={{ fontSize: 12, fontFamily: "Open Sans", fontWeight: 100, stroke: " #000000" }} />
+                    <XAxis dataKey="label" tick={{ fontSize: 12, fontFamily: "Open Sans"}} />
+                    <YAxis allowDecimals={false} tick={{ fontSize: 12, fontFamily: "Open Sans" }} />
                     <Tooltip />
                     <Line
                       type="monotone"
