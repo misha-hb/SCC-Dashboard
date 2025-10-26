@@ -30,12 +30,12 @@ export default function SummaryTable({ data, title, dim }: Props) {
   else if (dim === "subject" || title === "Subject Summary") header = "Subject";
 
   return (
-    <div style={{ width: "100%", background: "#fff", borderRadius: 12, padding: 12, overflowX: "auto", fontSize: 14, fontFamily: "sans-serif" }}>
+    <div style={{ width: "100%", background: "#fff", borderRadius: 12, padding: 12, overflowX: "auto", fontSize: 14, fontFamily: "Open Sans" }}>
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
           <tr>
-            <th style={{ textAlign: "left", padding: "8px", fontFamily: "sans-serif" }}>{header}</th>
-            <th style={{ textAlign: "right", padding: "8px", fontFamily: "sans-serif" }}>Count</th>
+            <th style={{ textAlign: "left", padding: "8px", fontFamily: "Open Sans" }}>{header}</th>
+            <th style={{ textAlign: "right", padding: "8px", fontFamily: "Open Sans" }}>Count</th>
           </tr>
         </thead>
         <tbody>
@@ -47,10 +47,10 @@ export default function SummaryTable({ data, title, dim }: Props) {
 
             return (
               <tr key={row.name}>
-                <td style={{ padding: "8px", borderTop: "1px solid #eee", color: "#000", fontFamily: "sans-serif" }}>
+                <td style={{ padding: "8px", borderTop: "1px solid #eee", color: "#000", fontFamily: "Open Sans" }}>
                   {displayName}
                 </td>
-                <td style={{ padding: "8px", borderTop: "1px solid #eee", textAlign: "right", color: "#000", fontFamily: "sans-serif" }}>
+                <td style={{ padding: "8px", borderTop: "1px solid #eee", textAlign: "right", color: "#000", fontFamily: "Open Sans" }}>
                   {row.value}
                 </td>
               </tr>

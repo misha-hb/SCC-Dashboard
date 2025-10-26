@@ -15,9 +15,9 @@ export default function SummaryScatter({ cases }: { cases: CaseItem[] }) {
             dataKey="ts"
             tickFormatter={(v) => new Date(v).toISOString().slice(0, 10)}
             domain={["dataMin", "dataMax"]}
-            tick={{ fontSize: 12, color: " #000000", fontFamily: "sans-serif" }}
+            tick={{ fontSize: 12, color: " #000000", fontFamily: "Open Sans" }}
           />
-          <YAxis dataKey="count" allowDecimals={false} tick={{ fontSize: 12, color: " #000000", fontFamily: "sans-serif"  }} />
+          <YAxis dataKey="count" allowDecimals={false} tick={{ fontSize: 12, color: " #000000", fontFamily: "Open Sans"  }} />
           <Tooltip
             labelFormatter={(v) => new Date(Number(v)).toISOString().slice(0, 10)}
             formatter={(value) => [value as number, "Cases"]}

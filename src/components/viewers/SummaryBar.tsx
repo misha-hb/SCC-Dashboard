@@ -32,7 +32,7 @@ const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375", 
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="name"
-              tick={{ fontSize: isMobile ? 12 : 14, fontFamily: 'sans-serif', fill: '#000' }}
+              tick={{ fontSize: isMobile ? 12 : 14, fontFamily: 'Open Sans', fill: '#000' }}
               interval="preserveStartEnd"
               tickMargin={isMobile ? 6 : 10}
               tickFormatter={(l: any) =>
@@ -43,11 +43,11 @@ const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375", 
               allowDecimals={false}
               width={isMobile ? 22 : 40}
               tickMargin={isMobile ? 2 : 6}
-              tick={{ fontSize: isMobile ? 11 : 12, fontFamily: 'sans-serif', fill: '#000' }}
+              tick={{ fontSize: isMobile ? 11 : 12, fontFamily: 'Open Sans', fill: '#000' }}
               domain={[0, (dataMax: number) => Math.max(1, dataMax) + pad]}
             />
             <Tooltip />
-            <Bar dataKey="value" radius={[8, 8, 0, 0]} fill="black" style={{ fontFamily: 'sans-serif' }}>
+            <Bar dataKey="value" radius={[8, 8, 0, 0]} fill="black" style={{ fontFamily: 'Open Sans' }}>
               {data.map((d, i) => (
                 <Cell
                   key={d.name}
