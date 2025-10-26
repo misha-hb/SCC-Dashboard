@@ -9,8 +9,8 @@ import InfoTip from "../InfoTip";
 import CaseDrawer from "../CaseDrawer";
 
 const MONTHS = [
-  "Janu","Feb","March","April","May","Jun",
-  "July","Aug","Sep","Oct","Nov","Dec",
+  "January","February","March","April","May","June",
+  "July","August","September","October","November","December",
 ] as const;
 
 
