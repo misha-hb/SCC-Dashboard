@@ -15,17 +15,17 @@ export default function SummaryPie({ data, onSliceClick }: Props) {
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie data={data} dataKey="value" nameKey="name" outerRadius="80%" style={{fontFamily:
-      'sans-serif'}}>
+      'open sans'}}>
             {data.map((p, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} onClick={() => onSliceClick?.(p.name, p.value)}
         cursor="pointer" />)}
             <LabelList dataKey="name" position="top" color="" style={{fontFamily:
-      'sans-serif'}}/>
+      'open sans'}}/>
 
           </Pie>
           <Tooltip />
           <Legend wrapperStyle={{
     color: '#000',                 // legend text color
-    fontFamily: 'sans-serif',
+    fontFamily: 'open sans',
     fontSize: isMobile ? 11 : 14,
     lineHeight: '22px',
   }}
