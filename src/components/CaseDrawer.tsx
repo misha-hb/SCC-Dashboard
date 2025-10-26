@@ -38,8 +38,15 @@ export default function CaseDrawer({ open, title, items, onClose }: Props) {
       window.addEventListener("resize", onResize);
       return () => window.removeEventListener("resize", onResize);
     }, []);
+React.useEffect(() => {
+  if (!open) return;
+
+  const allIds = new Set(items.map(c => c.case_number));
+  setOpenJudgeRows(allIds);
+  setOpenSubjectRows(allIds);
+}, [open, items]);
+
   
-    // persist width
     React.useEffect(() => {
       if (typeof window !== "undefined") {
         localStorage.setItem(WIDTH_KEY, String(widthPx));
@@ -262,7 +269,7 @@ export default function CaseDrawer({ open, title, items, onClose }: Props) {
                         color: "inherit",
                         fontSize: 12,
                       }}
-                      title={rowOpen ? "Hide judges" : "Show judges"}
+                      title={rowOpen ? "" : ""}
                     >
                       <svg
                         width="14"
@@ -283,7 +290,7 @@ export default function CaseDrawer({ open, title, items, onClose }: Props) {
                           strokeLinejoin="round"
                         />
                       </svg>
-                      {rowOpen ? "Hide" : "Show"}
+                      {rowOpen ? "" : ""}
                     </button>
                   )}
                 </div>
@@ -340,7 +347,7 @@ export default function CaseDrawer({ open, title, items, onClose }: Props) {
         color: "inherit",
         fontSize: 12,
       }}
-      title={rowSubjectsOpen ? "Hide subjects" : "Show subjects"}
+      title={rowSubjectsOpen ? "" : ""}
     >
       <svg
         width="14"
@@ -358,7 +365,7 @@ export default function CaseDrawer({ open, title, items, onClose }: Props) {
           strokeLinejoin="round"
         />
       </svg>
-      {rowSubjectsOpen ? "Hide" : "Show"}
+      {rowSubjectsOpen ? "" : ""}
     </button>
     </div>
   )}

@@ -32,7 +32,7 @@ const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375", 
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="name"
-              tick={{ fontSize: isMobile ? 12 : 14, fontFamily: 'Open Sans', fill: '#000' }}
+              tick={{ fontSize: isMobile ? 11 : 12, fontFamily: 'Open Sans', fill: '#000' }}
               interval="preserveStartEnd"
               tickMargin={isMobile ? 6 : 10}
               tickFormatter={(l: any) =>
@@ -46,8 +46,11 @@ const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375", 
               tick={{ fontSize: isMobile ? 11 : 12, fontFamily: 'Open Sans', fill: '#000' }}
               domain={[0, (dataMax: number) => Math.max(1, dataMax) + pad]}
             />
-            <Tooltip />
-            <Bar dataKey="value" radius={[8, 8, 0, 0]} fill="black" style={{ fontFamily: 'Open Sans' }}>
+            <Tooltip itemStyle={{fontFamily: 'Open Sans', fontSize: isMobile ? 11 : 12}} labelStyle={{
+    fontFamily: 'Open Sans',
+    fontSize: isMobile ? 12 : 13
+  }}/>
+            <Bar dataKey="value" radius={[8, 8, 0, 0]} fill="black" style={{ fontFamily: 'Open Sans'}}>
               {data.map((d, i) => (
                 <Cell
                   key={d.name}
@@ -56,7 +59,7 @@ const COLORS = [ "#7a475b","#c36161"," #df8a34","#e5d178","#cbcca0", "#5c9375", 
                   cursor="pointer"
                 />
               ))}
-              <LabelList dataKey="value" position="top" fill="#000" />
+              <LabelList dataKey="value" position="top" fill="#000" style={{fontFamily: '"Open Sans"', fontSize: isMobile ? 11 : 12}} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
